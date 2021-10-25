@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusEvent</title>
+    <style>
+      .invalid {
+        border-color: red;
+      }
+      #error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    Write your Email: <input type="email" id="input" />
+    <div id="error"></div>
+  </body>
+  <script>
+    let inp = document.getElementById('input')
+
+    inp.addEventListener('blur', funcBlur)
+    inp.addEventListener('focus', funcFocus)
+
+    function funcBlur(event) {
+      if (!event.target.value.includes('@')) {
+        event.target.classList.add('invalid')
+        document.getElementById('error').innerHTML =
+          'Invalid Email! Enter Correct Email!'
+      }
+    }
+    function funcFocus(event) {
+      if (event.target.classLIst.contains('invalid')) {
+        event.target.classList.remove('invalid')
+        document.getElementById('error').innerHTML = ''
+      }
+    }
+  </script>
+</html>
